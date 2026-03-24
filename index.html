@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PinPoint Golf — Your Marketing Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #141410;
+    --ink-mid: #3a3a34;
+    --ink-light: #7a7a6e;
+    --ink-faint: #b8b8ac;
+    --fairway: #1a3326;
+    --fairway-mid: #2e5c3e;
+    --fairway-light: #e8f0eb;
+    --blue: #7aaec4;
+    --blue-light: #e8f3f8;
+    --paper: #faf9f6;
+    --paper-dark: #f0ede6;
+    --white: #ffffff;
+    --rule: rgba(20,20,16,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Instrument Sans', sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white; }
+    .wrapper { max-width: 100%; padding: 0; }
+    .cover { min-height: auto; padding: 60px 60px 48px; }
+  }
+
+  .wrapper { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* Cover */
+  .cover { background: var(--fairway); min-height: 320px; padding: 56px 60px 52px; position: relative; overflow: hidden; margin: 0 -24px; }
+  .cover-texture {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,0.025) 48px, rgba(255,255,255,0.025) 49px), repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px);
+  }
+
+  /* Logo in cover */
+  .cover-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; position: relative; }
+  .cover-logo-text { display: flex; flex-direction: column; }
+  .cover-logo-name { font-family: 'Instrument Sans', sans-serif; font-size: 18px; font-weight: 500; color: var(--white); letter-spacing: .06em; line-height: 1; }
+  .cover-logo-sub { font-size: 9px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 3px; }
+
+  .cover-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; position: relative; display: flex; align-items: center; gap: 10px; }
+  .cover-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--blue); opacity: .5; }
+  .cover-business { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 500; color: var(--white); line-height: 1.1; margin-bottom: 12px; position: relative; max-width: 620px; }
+  .cover-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.5); position: relative; letter-spacing: .01em; }
+  .cover-meta { position: absolute; bottom: 48px; right: 60px; text-align: right; }
+  .cover-meta-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .cover-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  /* Sections */
+  .section { padding: 52px 0 0; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue); opacity: .6; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 28px; line-height: 1.2; }
+
+  /* Opportunity */
+  .opportunity { background: var(--fairway); border-radius: 4px; padding: 32px 36px; margin-bottom: 16px; }
+  .opportunity-label { font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  .opportunity-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--white); line-height: 1.5; }
+
+  /* Pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 600px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 22px; }
+  .pillar-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: var(--paper-dark); line-height: 1; margin-bottom: 12px; }
+  .pillar-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .pillar-body { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; }
+
+  .rule { border: none; border-top: 1px solid var(--rule); margin: 48px 0 0; }
+
+  /* Calendar */
+  .cal-week { margin-bottom: 28px; }
+  .cal-week-label { font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .cal-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (max-width: 540px) { .cal-items { grid-template-columns: 1fr; } }
+  .cal-item { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .cal-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+  .dot-social { background: var(--fairway-mid); }
+  .dot-email { background: var(--blue); }
+  .dot-review { background: #5a85b8; }
+  .cal-item-day { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 3px; }
+  .cal-item-type { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 4px; }
+  .cal-item-content { font-size: 13px; color: var(--ink-mid); line-height: 1.5; font-weight: 300; }
+
+  /* Emails */
+  .email-card { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 16px; overflow: hidden; }
+  .email-card-header { padding: 18px 24px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .email-name { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); }
+  .email-tag { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); background: var(--blue-light); padding: 2px 8px; border-radius: 2px; }
+  .email-subject { padding: 14px 24px 6px; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.3; }
+  .email-preview { padding: 0 24px 14px; font-size: 13px; color: var(--ink-light); font-style: italic; font-weight: 300; }
+  .email-body { padding: 16px 24px 22px; font-size: 13px; color: var(--ink-mid); line-height: 1.75; font-weight: 300; border-top: 1px solid var(--rule); white-space: pre-wrap; }
+
+  /* Reviews */
+  .review-strategy { background: var(--fairway-light); border-radius: 4px; padding: 22px 24px; margin-bottom: 20px; font-size: 14px; color: var(--fairway); line-height: 1.7; border-left: 3px solid var(--fairway-mid); }
+  .review-sequence { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .review-sequence::before { content: ''; position: absolute; left: 19px; top: 24px; bottom: 24px; width: 1px; background: var(--rule); }
+  .review-step { display: flex; gap: 20px; align-items: flex-start; padding: 0 0 20px; position: relative; }
+  .review-step:last-child { padding-bottom: 0; }
+  .review-step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--white); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink-mid); flex-shrink: 0; position: relative; z-index: 1; }
+  .review-step-body { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 18px; flex: 1; }
+  .review-step-trigger { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+  .review-step-channel { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .review-step-msg { font-size: 13px; color: var(--ink-mid); line-height: 1.65; font-weight: 300; }
+
+  /* Projected */
+  .projected { background: var(--blue-light); border-radius: 4px; padding: 20px 24px; margin-top: 28px; display: flex; gap: 16px; align-items: flex-start; border-left: 3px solid var(--blue); }
+  .projected-label { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+  .projected-text { font-size: 13px; color: var(--ink-mid); line-height: 1.65; font-weight: 300; }
+
+  /* Closing */
+  .closing { margin-top: 60px; padding: 36px 0 0; border-top: 1px solid var(--rule); display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .closing-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .closing-from { font-size: 13px; color: var(--ink-light); font-weight: 300; line-height: 1.7; }
+  .closing-note { font-size: 12px; color: var(--ink-faint); font-style: italic; max-width: 320px; line-height: 1.6; font-weight: 300; }
+
+  /* Footer logo */
+  .footer-logo { display: flex; align-items: center; gap: 8px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .footer-logo-name { font-size: 13px; font-weight: 500; color: var(--fairway); letter-spacing: .04em; }
+  .footer-logo-sub { font-size: 9px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); }
+
+  /* Toolbar */
+  .toolbar { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 8px; z-index: 100; }
+  .tool-btn { background: var(--fairway); color: var(--white); border: none; border-radius: 4px; padding: 10px 18px; font-family: 'Instrument Sans', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; transition: background .2s; }
+  .tool-btn:hover { background: var(--fairway-mid); }
+  .tool-btn.secondary { background: var(--white); color: var(--ink); border: 1px solid var(--rule); }
+  .tool-btn.secondary:hover { border-color: var(--ink-mid); }
+
+  /* Overlay */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(250,249,246,0.92); z-index: 200; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
+  .overlay.active { display: flex; }
+  .overlay-spinner { width: 32px; height: 32px; border: 1.5px solid var(--paper-dark); border-top-color: var(--fairway); border-radius: 50%; animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .overlay-text { font-size: 13px; color: var(--ink-light); font-weight: 300; }
+  .overlay-sub { font-size: 12px; color: var(--ink-faint); font-weight: 300; }
+
+  /* Modal */
+  .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(20,20,16,0.5); z-index: 300; align-items: center; justify-content: center; padding: 24px; }
+  .modal-backdrop.active { display: flex; }
+  .modal { background: var(--paper); border-radius: 6px; padding: 36px; width: 100%; max-width: 480px; box-shadow: 0 24px 64px rgba(0,0,0,0.2); }
+  .modal-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .modal-logo-name { font-size: 16px; font-weight: 500; color: var(--fairway); letter-spacing: .04em; }
+  .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .modal-sub { font-size: 13px; color: var(--ink-light); margin-bottom: 28px; font-weight: 300; line-height: 1.6; }
+  .modal label { display: block; font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 6px; margin-top: 16px; }
+  .modal label:first-of-type { margin-top: 0; }
+  .modal input, .modal select { width: 100%; background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 11px 14px; font-family: 'Instrument Sans', sans-serif; font-size: 14px; color: var(--ink); outline: none; transition: border-color .2s; }
+  .modal input:focus, .modal select:focus { border-color: var(--fairway); }
+  .modal input::placeholder { color: var(--ink-faint); }
+  .modal-row { display: flex; gap: 10px; margin-top: 24px; }
+  .modal-btn { flex: 1; padding: 12px; border-radius: 4px; border: none; font-family: 'Instrument Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: background .2s; }
+  .modal-btn.primary { background: var(--fairway); color: var(--white); }
+  .modal-btn.primary:hover { background: var(--fairway-mid); }
+  .modal-btn.ghost { background: transparent; color: var(--ink-light); border: 1px solid var(--rule); }
+  .modal-btn.ghost:hover { color: var(--ink); border-color: var(--ink-mid); }
+
+  .sender-bar { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--ink-light); font-weight: 300; }
+  .sender-bar strong { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- Modal -->
+<div class="modal-backdrop active" id="modal">
+  <div class="modal">
+    <div class="modal-logo">
+      <svg width="16" height="24" viewBox="0 0 38 56" fill="none">
+        <line x1="12" y1="2" x2="12" y2="50" stroke="#1a3326" stroke-width="3" stroke-linecap="round"/>
+        <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+        <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+      </svg>
+      <span class="modal-logo-name">PinPoint Golf</span>
+    </div>
+    <div class="modal-title">New prospect report</div>
+    <div class="modal-sub">Enter the business details. This generates their custom 30-day plan.</div>
+
+    <label>Business name</label>
+    <input type="text" id="m-biz" placeholder="e.g. Pebble Creek Golf Club" />
+
+    <label>Business type</label>
+    <select id="m-vertical">
+      <option value="daily-fee golf course">Daily-fee golf course</option>
+      <option value="indoor golf sim studio">Indoor golf sim studio</option>
+      <option value="driving range">Driving range</option>
+    </select>
+
+    <label>Location (optional)</label>
+    <input type="text" id="m-location" placeholder="e.g. Scottsdale, AZ" />
+
+    <label>Your name</label>
+    <input type="text" id="m-sender" placeholder="Pat Sullivan" />
+
+    <label>Your email</label>
+    <input type="email" id="m-email" placeholder="pat@pinpointgolf.co" />
+
+    <div class="modal-row">
+      <button class="modal-btn primary" onclick="startGenerate()">Generate report</button>
+    </div>
+  </div>
+</div>
+
+<!-- Loading -->
+<div class="overlay" id="overlay">
+  <div class="overlay-spinner"></div>
+  <div class="overlay-text" id="overlay-text">Building their plan...</div>
+  <div class="overlay-sub">About 15 seconds</div>
+</div>
+
+<!-- Report -->
+<div id="report" style="display:none;">
+  <div class="cover">
+    <div class="cover-texture"></div>
+    <div class="cover-logo">
+      <svg width="22" height="32" viewBox="0 0 38 56" fill="none">
+        <line x1="12" y1="2" x2="12" y2="50" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+        <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+      </svg>
+      <div class="cover-logo-text">
+        <span class="cover-logo-name">PinPoint Golf</span>
+        <span class="cover-logo-sub">Marketing Intelligence</span>
+      </div>
+    </div>
+    <div class="cover-eyebrow">30-Day Marketing Plan</div>
+    <div class="cover-business" id="cover-business">—</div>
+    <div class="cover-sub" id="cover-sub">—</div>
+    <div class="cover-meta">
+      <div class="cover-meta-label">Prepared for</div>
+      <div class="cover-meta-value" id="cover-date">—</div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div style="padding-top:32px;">
+      <div class="sender-bar" id="sender-bar">
+        Prepared by <strong id="sender-name-display">—</strong>&nbsp;·&nbsp;<span id="sender-email-display">—</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Where the money is</div>
+      <div class="section-title">Your biggest opportunity right now</div>
+      <div class="opportunity">
+        <div class="opportunity-label">Top opportunity</div>
+        <div class="opportunity-text" id="top-opportunity">—</div>
+      </div>
+      <div class="pillars" id="quick-wins-pillars"></div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section">
+      <div class="section-label">Month one plan</div>
+      <div class="section-title">30-day content calendar</div>
+      <div id="calendar-output"></div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section">
+      <div class="section-label">Email campaigns</div>
+      <div class="section-title">What we'd send — and when</div>
+      <div id="emails-output"></div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section">
+      <div class="section-label">Reputation system</div>
+      <div class="section-title">Automated review sequence</div>
+      <div class="review-strategy" id="review-strategy">—</div>
+      <div class="review-sequence" id="review-sequence"></div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section">
+      <div class="section-label">What to expect</div>
+      <div class="section-title">Month one projection</div>
+      <div class="projected">
+        <div>
+          <div class="projected-label">Projected lift</div>
+          <div class="projected-text" id="projected-lift">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <div>
+        <div class="closing-name" id="closing-name">—</div>
+        <div class="closing-from" id="closing-from">—</div>
+      </div>
+      <div class="closing-note">This plan was built specifically for your business. Everything here is ready to run — the only question is when.</div>
+    </div>
+
+    <div class="footer-logo">
+      <svg width="14" height="20" viewBox="0 0 38 56" fill="none">
+        <line x1="12" y1="2" x2="12" y2="50" stroke="#1a3326" stroke-width="3" stroke-linecap="round"/>
+        <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+        <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+      </svg>
+      <div>
+        <div class="footer-logo-name">PinPoint Golf</div>
+        <div class="footer-logo-sub">pinpointgolf.co</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toolbar no-print" id="toolbar" style="display:none;">
+  <button class="tool-btn" onclick="window.print()">Save as PDF</button>
+  <button class="tool-btn secondary" onclick="newReport()">New report</button>
+</div>
+
+<script>
+const loadingSteps = ["Analyzing their business...", "Building content calendar...", "Writing email campaigns...", "Crafting review sequences...", "Finalizing the plan..."];
+let loadingTimer;
+
+function newReport() {
+  document.getElementById('report').style.display = 'none';
+  document.getElementById('toolbar').style.display = 'none';
+  document.getElementById('modal').classList.add('active');
+}
+
+async function startGenerate() {
+  const biz = document.getElementById('m-biz').value.trim();
+  const vertical = document.getElementById('m-vertical').value;
+  const location = document.getElementById('m-location').value.trim();
+  const sender = document.getElementById('m-sender').value.trim();
+  const email = document.getElementById('m-email').value.trim();
+
+  if (!biz) { document.getElementById('m-biz').focus(); return; }
+  if (!sender) { document.getElementById('m-sender').focus(); return; }
+
+  document.getElementById('modal').classList.remove('active');
+  document.getElementById('overlay').classList.add('active');
+
+  let i = 0;
+  document.getElementById('overlay-text').textContent = loadingSteps[0];
+  loadingTimer = setInterval(() => {
+    i = (i + 1) % loadingSteps.length;
+    document.getElementById('overlay-text').textContent = loadingSteps[i];
+  }, 3000);
+
+  const locationStr = location ? ` in ${location}` : '';
+
+  const prompt = `You are PinPoint Golf, an AI marketing system built for golf businesses. Generate a specific 30-day marketing plan for this prospect:
+
+Business: ${biz}
+Type: ${vertical}
+Location: ${locationStr || 'not specified'}
+
+Return ONLY valid JSON, no markdown:
+
+{
+  "topOpportunity": "2 sharp sentences about their biggest untapped revenue opportunity",
+  "quickWins": [
+    {"title": "Quick win title (4 words max)", "body": "One sentence specific to their business"},
+    {"title": "Quick win title", "body": "One sentence"},
+    {"title": "Quick win title", "body": "One sentence"}
+  ],
+  "calendar": [
+    {"week": 1, "day": "Day 1", "type": "social", "content": "specific post idea"},
+    {"week": 1, "day": "Day 3", "type": "email", "content": "specific email subject"},
+    {"week": 1, "day": "Day 6", "type": "review", "content": "specific review tactic"},
+    {"week": 2, "day": "Day 8", "type": "social", "content": "specific post idea"},
+    {"week": 2, "day": "Day 10", "type": "email", "content": "specific email subject"},
+    {"week": 2, "day": "Day 13", "type": "social", "content": "specific post idea"},
+    {"week": 3, "day": "Day 15", "type": "review", "content": "specific review tactic"},
+    {"week": 3, "day": "Day 17", "type": "email", "content": "specific email subject"},
+    {"week": 3, "day": "Day 20", "type": "social", "content": "specific post idea"},
+    {"week": 4, "day": "Day 23", "type": "email", "content": "specific email subject"},
+    {"week": 4, "day": "Day 26", "type": "social", "content": "specific post idea"},
+    {"week": 4, "day": "Day 30", "type": "review", "content": "specific review tactic"}
+  ],
+  "emails": [
+    {
+      "name": "Reactivation campaign",
+      "subject": "subject line for ${biz} customers",
+      "preview": "preview text under 60 chars",
+      "body": "Full email 120-150 words, warm and direct, written for ${biz} as a ${vertical}."
+    },
+    {
+      "name": "Off-peak offer",
+      "subject": "subject line for slow-day revenue",
+      "preview": "preview text",
+      "body": "Full email 120-150 words specific to their off-peak challenge."
+    }
+  ],
+  "reviewStrategy": "2 sentences on the review approach specific to ${vertical} customers.",
+  "reviewSequence": [
+    {"trigger": "2 hours after visit", "channel": "SMS", "message": "Warm SMS under 160 chars specific to ${biz}."},
+    {"trigger": "48 hours later, no response", "channel": "Email", "message": "Short follow-up, 3-4 sentences."},
+    {"trigger": "Day 30 lapsed customer", "channel": "Email", "message": "Win-back message, 3-4 sentences."}
+  ],
+  "projectedLift": "2-3 sentences with realistic revenue lift estimate. Be specific, avoid hype."
+}
+
+Make everything feel written specifically for ${biz} as a ${vertical}${locationStr}.`;
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error?.message || 'API error');
+
+    const text = data.content?.find(b => b.type === 'text')?.text || '';
+    const clean = text.replace(/```json|```/g, '').trim();
+    const plan = JSON.parse(clean);
+
+    clearInterval(loadingTimer);
+    document.getElementById('overlay').classList.remove('active');
+    renderReport(plan, biz, vertical, locationStr, sender, email);
+
+  } catch(err) {
+    clearInterval(loadingTimer);
+    document.getElementById('overlay').classList.remove('active');
+    document.getElementById('modal').classList.add('active');
+    alert('Something went wrong: ' + err.message);
+  }
+}
+
+function renderReport(plan, biz, vertical, location, sender, email) {
+  const dateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  document.getElementById('cover-business').textContent = biz;
+  document.getElementById('cover-sub').textContent = vertical.charAt(0).toUpperCase() + vertical.slice(1) + (location || '');
+  document.getElementById('cover-date').textContent = dateStr;
+  document.getElementById('sender-name-display').textContent = sender;
+  document.getElementById('sender-email-display').textContent = email || 'PinPoint Golf';
+  document.getElementById('top-opportunity').textContent = plan.topOpportunity;
+
+  document.getElementById('quick-wins-pillars').innerHTML = plan.quickWins.map((w, i) => `
+    <div class="pillar">
+      <div class="pillar-number">0${i+1}</div>
+      <div class="pillar-title">${w.title}</div>
+      <div class="pillar-body">${w.body}</div>
+    </div>`).join('');
+
+  const calEl = document.getElementById('calendar-output');
+  let currentWeek = 0, weekHtml = '', itemsHtml = '';
+  plan.calendar.forEach(item => {
+    if (item.week !== currentWeek) {
+      if (currentWeek > 0) weekHtml += `<div class="cal-items">${itemsHtml}</div></div>`;
+      itemsHtml = '';
+      currentWeek = item.week;
+      weekHtml += `<div class="cal-week"><div class="cal-week-label">Week ${item.week}</div>`;
+    }
+    const dotClass = item.type === 'email' ? 'dot-email' : item.type === 'review' ? 'dot-review' : 'dot-social';
+    itemsHtml += `<div class="cal-item"><div class="cal-dot ${dotClass}"></div><div><div class="cal-item-day">${item.day}</div><div class="cal-item-type">${item.type}</div><div class="cal-item-content">${item.content}</div></div></div>`;
+  });
+  weekHtml += `<div class="cal-items">${itemsHtml}</div></div>`;
+  calEl.innerHTML = weekHtml;
+
+  document.getElementById('emails-output').innerHTML = plan.emails.map((e, i) => `
+    <div class="email-card">
+      <div class="email-card-header"><span class="email-name">${e.name}</span><span class="email-tag">Campaign ${i+1}</span></div>
+      <div class="email-subject">${e.subject}</div>
+      <div class="email-preview">${e.preview}</div>
+      <div class="email-body">${e.body}</div>
+    </div>`).join('');
+
+  document.getElementById('review-strategy').textContent = plan.reviewStrategy;
+  document.getElementById('review-sequence').innerHTML = plan.reviewSequence.map((s, i) => `
+    <div class="review-step">
+      <div class="review-step-num">${i+1}</div>
+      <div class="review-step-body">
+        <div class="review-step-trigger">${s.trigger}</div>
+        <div class="review-step-channel">${s.channel}</div>
+        <div class="review-step-msg">${s.message}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('projected-lift').textContent = plan.projectedLift;
+  document.getElementById('closing-name').textContent = sender;
+  document.getElementById('closing-from').innerHTML = `${email || ''}<br>PinPoint Golf · pinpointgolf.co`;
+
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('toolbar').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('modal').classList.contains('active')) startGenerate();
+});
+</script>
+</body>
+</html>
