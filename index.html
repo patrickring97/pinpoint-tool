@@ -166,6 +166,26 @@
 </style>
 </head>
 <body>
+<div id="auth-gate" style="position:fixed;inset:0;background:#0d1f16;display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:16px;">
+  <svg width="24" height="36" viewBox="0 0 38 56" fill="none">
+    <line x1="12" y1="2" x2="12" y2="50" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+    <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+  </svg>
+  <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:.1em;text-transform:uppercase;">PinPoint Golf</div>
+  <input id="pw-input" type="password" placeholder="Enter password" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;text-align:center;width:260px;" onkeydown="if(event.key==='Enter')checkPw()"/>
+  <button onclick="checkPw()" style="background:#7aaec4;color:#1a3326;border:none;border-radius:6px;padding:11px 28px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;width:260px;">Enter</button>
+  <div id="pw-error" style="font-size:12px;color:#e08080;display:none;">Incorrect password</div>
+</div>
+<script>
+function checkPw() {
+  if(document.getElementById('pw-input').value === '1001') {
+    document.getElementById('auth-gate').style.display = 'none';
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+  }
+}
+</script>
 
 <!-- Modal -->
 <div class="modal-backdrop active" id="modal">
