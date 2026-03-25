@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PinPoint Golf — More Rounds. More Revenue.</title>
+<meta name="description" content="We run the entire digital presence of golf courses, sim studios, and driving ranges on autopilot. More customers, more reviews, more revenue.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1a3326;
+  --forest-mid: #2e5c3e;
+  --forest-deep: #0d1f16;
+  --blue: #7aaec4;
+  --blue-light: #e8f3f8;
+  --cream: #f7f5f0;
+  --cream-dark: #ede9e0;
+  --ink: #1a1a14;
+  --ink-mid: #4a4a3a;
+  --ink-light: #7a7a6a;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(247,245,240,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(26,26,20,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-name { font-size: 15px; font-weight: 500; color: var(--forest); letter-spacing: .04em; }
+.nav-cta {
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+  letter-spacing: .02em;
+}
+.nav-cta:hover { background: var(--forest-mid); }
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  min-height: 100vh;
+  padding-top: 64px;
+}
+.hero-left {
+  background: var(--forest);
+  padding: 100px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  border: 1px solid rgba(122,174,196,0.05);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.hero-eyebrow-dot { width: 5px; height: 5px; background: var(--blue); border-radius: 50%; }
+.hero-h1 {
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 600;
+  line-height: .96;
+  letter-spacing: -.025em;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-h1 span { color: var(--blue); }
+.hero-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.75;
+  max-width: 400px;
+  margin-bottom: 44px;
+}
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: var(--forest);
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  align-self: flex-start;
+}
+.hero-btn:hover { background: #8bbdd0; transform: translateY(-1px); }
+
+.hero-right {
+  background: var(--cream-dark);
+  padding: 100px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-metric {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(26,26,20,0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.hero-metric:first-child { border-top: 1px solid rgba(26,26,20,0.1); }
+.hero-metric-bar { width: 3px; height: 52px; background: var(--blue); border-radius: 2px; flex-shrink: 0; margin-top: 4px; }
+.hero-metric-num {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+.hero-metric-label { font-size: 13px; color: var(--ink-light); font-weight: 300; line-height: 1.55; }
+.hero-metric-source { font-size: 10px; color: var(--ink-light); opacity: .45; margin-top: 4px; font-style: italic; }
+
+/* SECTIONS */
+.section { padding: 96px 72px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue); }
+.section-title {
+  font-size: clamp(32px, 3.5vw, 50px);
+  font-weight: 600;
+  line-height: .96;
+  letter-spacing: -.025em;
+  color: var(--forest);
+  margin-bottom: 52px;
+}
+
+/* FEATURES */
+.features-section { background: var(--white); }
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: rgba(26,26,20,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.feature {
+  background: var(--white);
+  padding: 44px 40px;
+  transition: background .2s;
+}
+.feature:hover { background: var(--cream); }
+.feature-icon {
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.feature-title { font-size: 17px; font-weight: 600; color: var(--forest); margin-bottom: 12px; letter-spacing: -.01em; }
+.feature-body { font-size: 14px; color: var(--ink-light); line-height: 1.75; font-weight: 300; }
+
+/* WHO — powder blue section, blue's starring moment */
+.who { background: var(--blue); }
+.who .section-eyebrow { color: var(--forest); }
+.who .section-eyebrow::before { background: var(--forest); }
+.who .section-title { color: var(--forest); }
+.vert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.vert-card {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  padding: 36px 28px;
+  transition: all .2s;
+}
+.vert-card:hover { background: rgba(255,255,255,0.38); }
+.vert-tag {
+  display: inline-block;
+  background: var(--forest);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+}
+.vert-title { font-size: 17px; font-weight: 600; color: var(--forest); margin-bottom: 12px; letter-spacing: -.01em; }
+.vert-body { font-size: 13px; color: rgba(26,51,38,0.65); line-height: 1.75; font-weight: 300; }
+
+/* HOW */
+.how { background: var(--cream-dark); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 36px 28px;
+  border: 1px solid rgba(26,26,20,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); }
+.step-num { font-size: 52px; font-weight: 600; color: rgba(26,51,38,0.06); line-height: 1; margin-bottom: 20px; letter-spacing: -.02em; }
+.step-title { font-size: 17px; font-weight: 600; color: var(--forest); margin-bottom: 10px; letter-spacing: -.01em; }
+.step-body { font-size: 13px; color: var(--ink-light); line-height: 1.75; font-weight: 300; }
+
+/* PRICING */
+.pricing { background: var(--forest); }
+.pricing .section-eyebrow { color: var(--blue); }
+.pricing .section-eyebrow::before { background: var(--blue); }
+.pricing .section-title { color: var(--white); }
+.pricing-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 860px;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(122,174,196,0.08);
+}
+.pricing-label { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+.pricing-price { font-size: 80px; font-weight: 600; color: var(--white); line-height: 1; letter-spacing: -.04em; margin-bottom: 4px; }
+.pricing-price sup { font-size: 28px; vertical-align: top; margin-top: 16px; display: inline-block; font-weight: 500; }
+.pricing-period { font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 300; margin-bottom: 6px; }
+.pricing-commitment { font-size: 12px; color: rgba(122,174,196,0.7); margin-bottom: 28px; }
+.pricing-btn {
+  background: var(--blue);
+  color: var(--forest);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+.pricing-btn:hover { background: #8bbdd0; }
+.pricing-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.pricing-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.5; }
+.pricing-check { color: var(--blue); font-size: 15px; flex-shrink: 0; }
+
+/* FORM */
+.form-section { background: var(--cream); }
+.form-title { font-size: clamp(36px, 4vw, 54px); font-weight: 600; line-height: .93; letter-spacing: -.025em; color: var(--forest); margin-bottom: 16px; }
+.form-sub { font-size: 16px; color: var(--ink-light); margin-bottom: 44px; line-height: 1.7; font-weight: 300; max-width: 480px; }
+.form { display: flex; flex-direction: column; gap: 12px; max-width: 600px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form input, .form select, .form textarea {
+  background: var(--white);
+  border: 1px solid rgba(26,26,20,0.1);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+  width: 100%;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--forest); }
+.form input::placeholder, .form textarea::placeholder { color: #bbb; }
+.form textarea { height: 110px; resize: none; }
+.form-submit {
+  background: var(--forest);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+  letter-spacing: .02em;
+}
+.form-submit:hover { background: var(--forest-mid); }
+.form-email { margin-top: 14px; font-size: 13px; color: var(--ink-light); }
+.form-email a { color: var(--forest); text-decoration: none; font-weight: 500; }
+.form-email a:hover { color: var(--forest-mid); }
+
+/* FOOTER */
+footer { background: var(--forest-deep); padding: 48px 72px; }
+.footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-name { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.3); letter-spacing: .04em; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * { animation: fadeUp .5s ease forwards; opacity: 0; }
+.hero-eyebrow { animation-delay: .1s; }
+.hero-h1 { animation-delay: .2s; }
+.hero-sub { animation-delay: .3s; }
+.hero-btn { animation-delay: .4s; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 80px 32px; min-height: 70vh; }
+  .hero-right { padding: 60px 32px; }
+  .features, .steps, .vert-grid { grid-template-columns: 1fr; }
+  .pricing-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
+  .section { padding: 72px 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  nav { padding: 0 24px; }
+  footer { padding: 40px 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <svg width="16" height="24" viewBox="0 0 38 56" fill="none">
+      <line x1="12" y1="2" x2="12" y2="50" stroke="#1a3326" stroke-width="3" stroke-linecap="round"/>
+      <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+      <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+    </svg>
+    <span class="nav-logo-name">PinPoint Golf</span>
+  </a>
+  <button class="nav-cta" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">Get free audit</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>AI-powered · Done for you</div>
+    <h1 class="hero-h1">More rounds.<br>More reviews.<br><span>More revenue.</span></h1>
+    <p class="hero-sub">We run the entire digital presence of golf courses, sim studios, and driving ranges — completely on autopilot. You focus on the operation. We handle everything else.</p>
+    <button class="hero-btn" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">Get your free audit →</button>
+  </div>
+  <div class="hero-right">
+    <div class="hero-metric">
+      <div class="hero-metric-bar"></div>
+      <div>
+        <div class="hero-metric-num">8–15</div>
+        <div class="hero-metric-label">Additional rounds per week operators typically see when their existing customer list is actively working for them</div>
+        <div class="hero-metric-source">Based on email marketing benchmarks for hospitality & recreation</div>
+      </div>
+    </div>
+    <div class="hero-metric">
+      <div class="hero-metric-bar"></div>
+      <div>
+        <div class="hero-metric-num">2×</div>
+        <div class="hero-metric-label">Average review count growth operations see within 60 days of running an automated review sequence</div>
+        <div class="hero-metric-source">Based on automated review platform industry data</div>
+      </div>
+    </div>
+    <div class="hero-metric">
+      <div class="hero-metric-bar"></div>
+      <div>
+        <div class="hero-metric-num">100%</div>
+        <div class="hero-metric-label">Done for you. Zero additional workload on your end — just results in your inbox each month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section features-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">What you get</div>
+    <div class="section-title">Everything a marketing team<br>would do. Done for you.</div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7aaec4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="feature-title">Email marketing</div>
+        <div class="feature-body">Automated campaigns to your existing customer list. Reactivation sequences, off-peak promos, event announcements — running continuously without you lifting a finger.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7aaec4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="feature-title">Google review generation</div>
+        <div class="feature-body">Timed review requests sent automatically after every visit. More reviews means better local search ranking and more new customers finding you first.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7aaec4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+          </svg>
+        </div>
+        <div class="feature-title">Social content & visibility</div>
+        <div class="feature-body">Consistent, on-brand content across the channels your customers actually use — so you stay top of mind when golfers are deciding where to play, book a lesson, or plan their next outing.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7aaec4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="feature-title">Monthly performance reports</div>
+        <div class="feature-body">Clear numbers on what's working. Reviews earned, campaigns sent, open rates. You always know exactly what you're getting for your investment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section who">
+  <div class="section-inner">
+    <div class="section-eyebrow">Built for</div>
+    <div class="section-title">Every kind of<br>golf operation.</div>
+    <div class="vert-grid">
+      <div class="vert-card">
+        <div class="vert-tag">Golf courses</div>
+        <div class="vert-title">Daily-fee courses</div>
+        <div class="vert-body">Fill your tee sheet on slow days without spending on ads. Your existing players are your best marketing channel — we make sure you're in front of them consistently.</div>
+      </div>
+      <div class="vert-card">
+        <div class="vert-tag">Sim studios</div>
+        <div class="vert-title">Indoor golf & simulators</div>
+        <div class="vert-body">Members who lapse cost more to replace than to retain. We run the reactivation and loyalty sequences that keep your bays full week after week.</div>
+      </div>
+      <div class="vert-card">
+        <div class="vert-tag">Ranges</div>
+        <div class="vert-title">Driving ranges</div>
+        <div class="vert-body">Top Golf proved the market exists. We give independent ranges the digital infrastructure to compete at that level — without the franchise fees or corporate overhead.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section how">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <div class="section-title">Up and running<br>in one week.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Free growth audit</div>
+        <div class="step-body">We analyze your operation, your online presence, and your existing customer base. You get a custom plan showing exactly where the revenue is hiding.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">We build your system</div>
+        <div class="step-body">Our team sets up your email sequences, review automation, and content calendar — all tailored specifically to your operation and your customers.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">It runs itself</div>
+        <div class="step-body">You get a clean monthly report. We handle everything else. Most operations see measurable results within the first 30 days of going live.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Investment</div>
+    <div class="section-title">Simple pricing.<br>No surprises.</div>
+    <div class="pricing-card">
+      <div>
+        <div class="pricing-label">Monthly retainer</div>
+        <div class="pricing-price"><sup>$</sup>600</div>
+        <div class="pricing-period">per month, all in</div>
+        <div class="pricing-commitment">Month-to-month · 30-day cancellation notice</div>
+        <button class="pricing-btn" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">Start with a free audit →</button>
+      </div>
+      <ul class="pricing-list">
+        <li><span class="pricing-check">✓</span>Full email marketing system</li>
+        <li><span class="pricing-check">✓</span>Automated Google review generation</li>
+        <li><span class="pricing-check">✓</span>Monthly social content calendar</li>
+        <li><span class="pricing-check">✓</span>Monthly performance report</li>
+        <li><span class="pricing-check">✓</span>Dedicated account management</li>
+        <li><span class="pricing-check">✓</span>Month-to-month · cancel with 30 days notice</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section form-section" id="audit">
+  <div class="section-inner">
+    <div class="section-eyebrow">Free growth audit</div>
+    <h2 class="form-title">Let's look at<br>your operation.</h2>
+    <p class="form-sub">Tell us about your business. We'll build a custom marketing plan specific to your course, range, or studio — no cost, no commitment.</p>
+    <form class="form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="Your name" required />
+        <input type="text" placeholder="Business name" required />
+      </div>
+      <select required>
+        <option value="">Business type</option>
+        <option>Daily-fee golf course</option>
+        <option>Indoor golf / sim studio</option>
+        <option>Driving range</option>
+      </select>
+      <div class="form-row">
+        <input type="email" placeholder="Email address" required />
+        <input type="tel" placeholder="Phone (optional)" />
+      </div>
+      <textarea placeholder="Tell us about your operation — location, size, biggest challenge (optional)"></textarea>
+      <button type="submit" class="form-submit">Send my free audit request →</button>
+    </form>
+    <div class="form-email">Prefer to reach out directly? <a href="mailto:pat@pinpointgolf.co">pat@pinpointgolf.co</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="14" height="20" viewBox="0 0 38 56" fill="none">
+        <line x1="12" y1="2" x2="12" y2="50" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M12 2 L36 11 L12 20 Z" fill="#7aaec4"/>
+        <circle cx="12" cy="50" r="5" fill="#7aaec4"/>
+      </svg>
+      <span class="footer-logo-name">PinPoint Golf · pinpointgolf.co</span>
+    </div>
+    <span class="footer-copy">© 2026 PinPoint Golf</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function handl
